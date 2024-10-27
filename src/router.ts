@@ -64,7 +64,7 @@ router.put("/trazabilidad/analisis/:id", editarAnalisis);
 router.delete("/trazabilidad/analisis/:id", eliminarAnalisis);
 
 
-//Embalaje
+//Embalaje by Pantera
 
 router.post("/trazabilidad/embalaje",crearEmbalaje)
 
