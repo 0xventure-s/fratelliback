@@ -5,6 +5,14 @@ import MateriaPrima from "./MateriaPrima"; // Asegúrate de importar el modelo
   tableName: "InicioTrazabilidad",
 })
 class InicioTrazabilidad extends Model {
+
+  @Column({
+    type: DataType.INTEGER,
+    primaryKey: true, // Definir 'id' como clave primaria
+    autoIncrement: true, // Habilitar auto-incremento
+  })
+  declare id: number;
+ 
   @Column({
     type: DataType.INTEGER,
   })
@@ -14,15 +22,17 @@ class InicioTrazabilidad extends Model {
   @Column({
     type: DataType.INTEGER,
   })
-  declare LR1: number; // ID de Materia Prima
-
-  @BelongsTo(() => MateriaPrima)
-  materiaPrima: MateriaPrima; // Relación con Materia Prima
+  declare LR1: number;
 
   @Column({
-    type: DataType.DATE, // Agrega el tipo de dato DATE para fecha y hora
+    type: DataType.DATE,
   })
-  declare fechaHoraInicio: Date; // Fecha y hora de inicio
+  declare fechaHoraInicio: Date;
+
+  @BelongsTo(() => MateriaPrima)
+  materiaPrima: MateriaPrima;
 }
+
+
 
 export default InicioTrazabilidad;

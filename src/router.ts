@@ -11,10 +11,12 @@ import {
   editarTostados,
   eliminarTostados,
   Todoslostostados,
+  
   Tostadero,
+  
   TostadosPorId,
 } from "./handlers/Trazabilidad/Tostadero";
-import { iniciarTrazabilidad } from "./handlers/Trazabilidad/Trazabilidad";
+import { iniciarTrazabilidad, verTrazabilidades } from "./handlers/Trazabilidad/Trazabilidad";
 import crearReposo, {
   editarreposo,
   eliminarreposo,
@@ -41,6 +43,8 @@ router.delete("/:id", eliminarMateriaPrima);
 
 // Ruta para iniciar el proceso de trazabilidad
 router.post("/trazabilidad", iniciarTrazabilidad);
+router.get("/trazabilidad/vertodos",verTrazabilidades)
+
 router.post("/trazabilidad/tostadero", Tostadero);
 router.get("/trazabilidad/tostadero/", Todoslostostados);
 router.get("/trazabilidad/tostadero/:id", TostadosPorId);

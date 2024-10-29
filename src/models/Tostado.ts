@@ -1,47 +1,49 @@
-import { Table, Column, DataType, Model, ForeignKey } from "sequelize-typescript";
-import MateriaPrima from "./MateriaPrima"; // Asegúrate de importar el modelo
+import { Table, Column, DataType, Model, ForeignKey, BelongsTo } from "sequelize-typescript";
+import InicioTrazabilidad from "./InicioTrazabilidad";
 
 @Table({
-  tableName: "Tostado", // Nombre de la tabla
+  tableName: "Tostado",
 })
 class Tostado extends Model {
-  @ForeignKey(() => MateriaPrima) // Si tienes una relación con MateriaPrima
+  @ForeignKey(() => InicioTrazabilidad)
   @Column({
-    type: DataType.INTEGER, // ID de Materia Prima
-    allowNull: true, // No permitir nulos
+    type: DataType.INTEGER,
+    allowNull: false,
   })
-  declare LR1: number; // ID de materia prima
+  declare inicioTrazabilidadId: number;
+
+  @BelongsTo(() => InicioTrazabilidad)
+  inicioTrazabilidad: InicioTrazabilidad;
 
   @Column({
-    type: DataType.DATE, // Fecha y hora de tueste
-    allowNull: false, // No permitir nulos
+    type: DataType.DATE,
+    allowNull: false,
   })
   declare fechaHoraTostado: Date;
 
   @Column({
-    type: DataType.STRING, // Tipo de tueste
-    allowNull: false, // No permitir nulos
+    type: DataType.STRING,
+    allowNull: false,
   })
-  declare tipoDeTostado: string; // Tipo de tueste (ej. medio, oscuro, claro)
+  declare tipoDeTostado: string;
 
   @Column({
-    type: DataType.FLOAT, // Temperatura en grados Celsius
-    allowNull: false, // No permitir nulos
+    type: DataType.FLOAT,
+    allowNull: false,
   })
   declare temperatura: number;
 
   @Column({
-    type: DataType.FLOAT, // Porcentaje de humedad
-    allowNull: false, // No permitir nulos
+    type: DataType.FLOAT,
+    allowNull: false,
   })
   declare humedad: number;
 
   @Column({
-    type: DataType.INTEGER, // Tiempo total en minutos
-    allowNull: false, // No permitir nulos
+    type: DataType.INTEGER,
+    allowNull: false,
   })
   declare tiempoDeTostado: number;
-  cantidadMP: any;
 }
 
 export default Tostado;
