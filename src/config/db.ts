@@ -5,7 +5,7 @@ import InicioTrazabilidad from "../models/InicioTrazabilidad";
 import Tostado from "../models/Tostado";
 import Analisis from "../models/Analisis";
 import Reposo from "../models/Reposo";
-import Embalaje from "../models/Emabalaje";
+import Embalaje from "../models/Emabalaje"
 
 configDotenv();
 
