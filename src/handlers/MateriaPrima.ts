@@ -1,11 +1,20 @@
 import { Request, Response } from "express";
 import MateriaPrima from "../models/MateriaPrima";
 
+
+
+
+
+
+
 export async function nuevaMateriaPrima(req: Request, res: Response) {
   const materiaprima = await MateriaPrima.create(req.body);
 
   res.json({ data: materiaprima });
 }
+
+
+
 
 export async function verMateriasPrimas(req: Request, res: Response) {
   const product = await MateriaPrima.findAll();

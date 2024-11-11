@@ -45,7 +45,7 @@ router.delete("/:id", eliminarMateriaPrima);
 router.post("/trazabilidad", iniciarTrazabilidad);
 router.get("/trazabilidad/vertodos",verTrazabilidades)
 
-router.post("/trazabilidad/tostadero", Tostadero);
+router.post("/trazabilidad/tostadero/:id", Tostadero);
 router.get("/trazabilidad/tostadero/", Todoslostostados);
 router.get("/trazabilidad/tostadero/:id", TostadosPorId);
 router.put("/trazabilidad/tostadero/:id", editarTostados);
@@ -53,7 +53,7 @@ router.delete("/trazabilidad/tostadero/:id", eliminarTostados);
 
 //REPOSO
 
-router.post("/trazabilidad/reposo", crearReposo);
+router.post("/trazabilidad/reposo/:id", crearReposo);
 router.get("/trazabilidad/reposo", verReposos);
 router.get("/trazabilidad/reposo/:id", verreposoPorId);
 router.put("/trazabilidad/reposo/:id", editarreposo);

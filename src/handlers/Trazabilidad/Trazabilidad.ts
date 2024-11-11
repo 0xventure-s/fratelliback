@@ -2,11 +2,9 @@ import { Request, Response } from "express";
 import InicioTrazabilidad from "../../models/InicioTrazabilidad";
 import MateriaPrima from "../../models/MateriaPrima";
 
+export async function iniciarTrazabilidad(req: Request,res: Response): Promise<void> {
 
-export async function iniciarTrazabilidad(
-  req: Request,
-  res: Response
-): Promise<void> {
+  
   const { cantidadMP, LR1, fechaHoraInicio } = req.body;
 
   try {
@@ -25,14 +23,20 @@ export async function iniciarTrazabilidad(
 
     // Verificar que no se supere la cantidad disponible
     if (cantidadMP > materiaPrima.cantidad) {
-      res.status(400).json({ error: "Cantidad a utilizar supera la cantidad disponible" });
+      res
+        .status(400)
+        .json({ error: "Cantidad a utilizar supera la cantidad disponible" });
       return;
     }
 
     // Calcular nueva cantidad y evitar negativos
     const nuevaCantidad = materiaPrima.cantidad - cantidadMP;
     if (nuevaCantidad < 0) {
-      res.status(400).json({ error: "No se puede usar más materia prima de la que hay disponible" });
+      res
+        .status(400)
+        .json({
+          error: "No se puede usar más materia prima de la que hay disponible",
+        });
       return;
     }
 
@@ -47,13 +51,13 @@ export async function iniciarTrazabilidad(
     });
 
     // Incluir la variedad de la materia prima en la respuesta
-    res.status(201).json({ 
+    res.status(201).json({
       data: {
         ...trazabilidad.toJSON(),
         materiaPrima: {
-          variedad: materiaPrima.variedad
-        }
-      }
+          variedad: materiaPrima.variedad,
+        },
+      },
     });
   } catch (error) {
     console.error("Error al iniciar trazabilidad:", error);
@@ -61,17 +65,19 @@ export async function iniciarTrazabilidad(
   }
 }
 
-
-
-
-export async function verTrazabilidades(req: Request, res: Response): Promise<void> {
+export async function verTrazabilidades(
+  req: Request,
+  res: Response
+): Promise<void> {
   try {
     // Obtener todas las trazabilidades con solo el campo "variedad" de MateriaPrima
     const trazabilidades = await InicioTrazabilidad.findAll({
-      include: [{
-        model: MateriaPrima,
-        attributes: ['variedad'], // Solo traemos "variedad"
-      }],
+      include: [
+        {
+          model: MateriaPrima,
+          attributes: ["variedad"], // Solo traemos "variedad"
+        },
+      ],
     });
 
     // Verificar si se encontraron trazabilidades
@@ -87,7 +93,3 @@ export async function verTrazabilidades(req: Request, res: Response): Promise<vo
     res.status(500).json({ error: "Error al obtener trazabilidades" });
   }
 }
-
-
-
-

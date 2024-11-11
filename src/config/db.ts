@@ -13,4 +13,4 @@ const db = new Sequelize(process.env.DATABASE_URL!, {
   models: [MateriaPrima, InicioTrazabilidad, Tostado, Analisis, Reposo,Embalaje],
 });
 
-export default db;
+export default db

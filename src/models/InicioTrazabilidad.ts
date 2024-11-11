@@ -1,5 +1,6 @@
-import { Table, Column, DataType, Model, ForeignKey, BelongsTo } from "sequelize-typescript";
+import { Table, Column, DataType, Model, ForeignKey, BelongsTo, HasOne } from "sequelize-typescript";
 import MateriaPrima from "./MateriaPrima"; // Asegúrate de importar el modelo
+import Tostado from "./Tostado";
 
 @Table({
   tableName: "InicioTrazabilidad",
@@ -31,7 +32,13 @@ class InicioTrazabilidad extends Model {
 
   @BelongsTo(() => MateriaPrima)
   materiaPrima: MateriaPrima;
+
+
+  @HasOne(() => Tostado)
+  Tostado: Tostado;
+
 }
+
 
 
 
