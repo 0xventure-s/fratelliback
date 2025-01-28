@@ -11,12 +11,13 @@ import {
   editarTostados,
   eliminarTostados,
   Todoslostostados,
-  
   Tostadero,
-  
   TostadosPorId,
 } from "./handlers/Trazabilidad/Tostadero";
-import { iniciarTrazabilidad, verTrazabilidades } from "./handlers/Trazabilidad/Trazabilidad";
+import {
+  iniciarTrazabilidad,
+  verTrazabilidades,
+} from "./handlers/Trazabilidad/Trazabilidad";
 import crearReposo, {
   editarreposo,
   eliminarreposo,
@@ -43,7 +44,7 @@ router.delete("/:id", eliminarMateriaPrima);
 
 // Ruta para iniciar el proceso de trazabilidad
 router.post("/trazabilidad", iniciarTrazabilidad);
-router.get("/trazabilidad/vertodos",verTrazabilidades)
+router.get("/trazabilidad/vertodos", verTrazabilidades);
 
 router.post("/trazabilidad/tostadero/:id", Tostadero);
 router.get("/trazabilidad/tostadero/", Todoslostostados);
@@ -67,9 +68,8 @@ router.get("/trazabilidad/analisis/:id", verMateriaPorId);
 router.put("/trazabilidad/analisis/:id", editarAnalisis);
 router.delete("/trazabilidad/analisis/:id", eliminarAnalisis);
 
-
 //Embalaje by Pantera
 
-router.post("/trazabilidad/embalaje",crearEmbalaje)
+router.post("/trazabilidad/embalaje", crearEmbalaje);
 
 export default router;
