@@ -6,7 +6,7 @@ import InicioTrazabilidad from "./InicioTrazabilidad";
 })
 class Reposo extends Model {
   @ForeignKey(() => InicioTrazabilidad)
-  @Column({
+  @Column({ 
     type: DataType.INTEGER,
     allowNull: false,
   })
