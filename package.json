@@ -4,9 +4,8 @@
   "description": "Backend para Fratelli / Creado por Franco Alonso para VISION METRICS 2024",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
-    "start": "node dist/index.js",  
-    "dev": "ts-node src/index.ts"
+    "dev": "nodemon --exec ts-node src/index.ts",
+    "build":"tsc"
   },
   "author": "FRANCO ALONSO",
   "license": "ISC",
